@@ -1,11 +1,20 @@
 const search = document.getElementById("search");
 const btnSearch = document.getElementById("btn-search");
-let url;
+const otherDay = document.querySelector('.other-days');
+const card = document.querySelector('.card');
 
+
+console.log(otherDay)
+
+let url;
 btnSearch.addEventListener("click", ()=> {
-    url = `https://api.openweathermap.org/data/2.5/forecast?q=${search.value}&zip=${search.value},FR&appid=4260db690a0ebffac51a405b02d49ab8&units=metric&lang=FR`;
-    fetchWeather()
+    url = `https://api.openweathermap.org/data/2.5/forecast?q=${search.value}&appid=4260db690a0ebffac51a405b02d49ab8&units=metric&lang=FR`;
+    fetchWeather();
+    otherDay.style.display='flex';
+    card.style.display='flex';
 })
+
+
 
 
 // Aujourd'hui:
