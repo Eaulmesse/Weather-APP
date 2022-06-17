@@ -1,3 +1,13 @@
+const search = document.getElementById("search");
+const btnSearch = document.getElementById("btn-search");
+let url;
+
+btnSearch.addEventListener("click", ()=> {
+    url = `https://api.openweathermap.org/data/2.5/forecast?q=${search.value}&zip=${search.value},FR&appid=4260db690a0ebffac51a405b02d49ab8&units=metric&lang=FR`;
+    fetchWeather()
+})
+
+
 // Aujourd'hui:
 const ville = document.getElementById("ville");
 const dayoneTemp = document.getElementById("day1-temp");
@@ -32,9 +42,11 @@ const dayfiveSpeed = document.getElementById("day5-wind");
 
 
 function fetchWeather() {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=Miribel&appid=4260db690a0ebffac51a405b02d49ab8&units=metric&lang=FR`)
+    fetch(url)
 .then((response) => response.json())
 .then(response => {
+
+    console.log(response);
 
     // AUJOURD'HUI
     ville.textContent = response.city.name;
@@ -126,4 +138,4 @@ function fetchWeather() {
     dayfiveSpeed.textContent = dayFiveWind.speed += " KM/H";
 })}
 
-fetchWeather();
+
